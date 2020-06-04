@@ -2,8 +2,7 @@ package me.lemon.demo.web;
 
 import java.util.List;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -101,14 +100,13 @@ public class UserController {
 
     @PostMapping("/login")
     public String login(Model m,
-        HttpServletResponse resp,
+        HttpSession session,
         @RequestParam("name") String name,
         @RequestParam("password") String password) {
         List<User> users = userService.queryForUsers();
         for (User u : users) {
             if (u.getName().equals(name) && u.getPassword().equals(password)) {
-                Cookie cookie = new Cookie("username", name);
-                resp.addCookie(cookie);
+                session.setAttribute("username", name);
                 return "redirect:/";
             }
         }
