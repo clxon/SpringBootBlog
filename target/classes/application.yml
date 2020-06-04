@@ -1,0 +1,10 @@
+# Use port 3000
+server:
+  port: 3000
+
+spring:
+  datasource:
+    username: root
+    password: password
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/lemon?characterEncoding=UTF-8

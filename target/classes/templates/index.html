@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://thymeleaf.org">
+    <head>
+        <meta charset="utf8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+        <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <title>Index Page</title>
+    </head>
+    <body>
+        <div class="text-center">
+            <h1>Index Page</h1>
+            <p>Go to <a th:href="@{/user/login}">Login</a></p>
+            <p>Go to <a th:href="@{/user/add}">Register</a></p>
+            <p>Go to <a th:href="@{/user/del}">Delete</a></p>
+        </div>
+    </body>
+</html>
