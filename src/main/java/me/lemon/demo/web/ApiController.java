@@ -17,6 +17,10 @@ public class ApiController {
     @Autowired
     private UserService userService;
 
+    @GetMapping("/jsonQuery")
+    public List<User> queryForJson() {
+        return userService.queryForUsers();
+    }
 
     @GetMapping("/query")
     public String queryUser(Model m,
