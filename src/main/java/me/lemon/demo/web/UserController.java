@@ -1,9 +1,7 @@
 package me.lemon.demo.web;
 
-import java.util.List;
-
-import javax.servlet.http.HttpSession;
-
+import me.lemon.demo.bean.User;
+import me.lemon.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,31 +10,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import me.lemon.demo.bean.User;
-import me.lemon.demo.service.UserService;
+import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
     @Autowired
     private UserService userService;
-
-    @GetMapping("/query")
-    public String queryUser(Model m,
-        @RequestParam(value = "id",required = false) Integer id,
-        @RequestParam(value = "name",required = false) String name) {
-        if (id == null && name == null) {
-            List<User> users = userService.queryForUsers();
-            m.addAttribute("users", users);
-        } else if (id != null) {
-            List<User> users = userService.selectById(id);
-            m.addAttribute("users", users);
-        } else if (name != null) { 
-            List<User> users = userService.selectByName(name);
-            m.addAttribute("users", users);
-        }
-        return "query";
-    }
 
     @GetMapping("/add")
     public String addUser(Model m) {
@@ -46,11 +27,11 @@ public class UserController {
 
     @PostMapping("/add")
     public String registerUser(Model m,
-        @RequestParam("name") String name,
-        @RequestParam("password") String password) {
+                               @RequestParam("name") String name,
+                               @RequestParam("password") String password) {
         boolean isRegisterOk = true;
         List<User> users = userService.queryForUsers();
-        for(User u : users) {
+        for (User u : users) {
             if (name.equals(u.getName())) {
                 isRegisterOk = false;
             }
@@ -75,8 +56,8 @@ public class UserController {
 
     @PostMapping("/del")
     public String delUserPost(Model m,
-        @RequestParam("name") String name,
-        @RequestParam("password") String password) {
+                              @RequestParam("name") String name,
+                              @RequestParam("password") String password) {
         boolean canDel = false;
         List<User> users = userService.queryForUsers();
         for (User u : users) {
@@ -100,9 +81,9 @@ public class UserController {
 
     @PostMapping("/login")
     public String login(Model m,
-        HttpSession session,
-        @RequestParam("name") String name,
-        @RequestParam("password") String password) {
+                        HttpSession session,
+                        @RequestParam("name") String name,
+                        @RequestParam("password") String password) {
         List<User> users = userService.queryForUsers();
         for (User u : users) {
             if (u.getName().equals(name) && u.getPassword().equals(password)) {
