@@ -6,5 +6,5 @@ spring:
   datasource:
     username: root
     password: password
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/lemon?characterEncoding=UTF-8
