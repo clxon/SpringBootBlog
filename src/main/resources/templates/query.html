@@ -9,11 +9,13 @@
         <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body>
-        <div th:each="user : ${users}">
-            <p th:text="'用户的ID是 : ' + ${user.id}"></p>
-            <p th:text="'用户名是 : ' + ${user.name}"></p>
-            <p th:text="'用户密码是 : ' + ${user.password}"></p>
-            <br />
+        <div class="text-center display-5">
+            <div th:each="user : ${users}">
+                <p th:text="'用户的ID是 : ' + ${user.id}"></p>
+                <p th:text="'用户名是 : ' + ${user.name}"></p>
+                <p th:text="'用户密码是 : ' + ${user.password}"></p>
+                <br />
+            </div>
         </div>
     </body>
 </html>
