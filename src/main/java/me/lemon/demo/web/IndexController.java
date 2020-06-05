@@ -12,7 +12,7 @@ public class IndexController {
     public String index(Model m, HttpSession session){
         String name = (String)session.getAttribute("username");
         if (name != null) {
-            m.addAttribute("username",name);
+            m.addAttribute("message","Welcome !!! " + name);
         }
         return "index";
     }

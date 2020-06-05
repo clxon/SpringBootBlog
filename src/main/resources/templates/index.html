@@ -11,7 +11,7 @@
     <body>
         <div class="text-center">
             <h1>Index Page</h1>
-            <p th:text="'Welcome !!! ' + ${username}"></p>
+            <p th:text="${message}"></p>
             <p>Go to <a th:href="@{/user/login}">Login</a></p>
             <p>Go to <a th:href="@{/user/add}">Register</a></p>
             <p>Go to <a th:href="@{/user/del}">Delete</a></p>
